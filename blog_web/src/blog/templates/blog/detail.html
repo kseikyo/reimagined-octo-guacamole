@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+	{{ object.title }}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	{% include 'blog/list-inline.html' with blog_post=object truncate=False detail=True in_post=True show_image=False %}
+	<!-- <iframe style="inset-inline: 30%; position: relative;" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D2129721013742801%26id%3D100001147680634&width=500" width="500" height="349" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media">
+	</iframe> -->
+	
+</div><!-- <p style="inset-inline: 30%; position: relative;">https://forms.gle/dAyyoC4h8rurGKDK7</p> -->
+{% endblock %}

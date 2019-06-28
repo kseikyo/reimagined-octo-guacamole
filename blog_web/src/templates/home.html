@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="inset-inline: 35%; position: relative;">{{ title }}</h1>
+
+{% for data in blog_list %}
+	{% include 'blog/list-inline.html' with blog_post=data truncate=True detail=False in_post=False%}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+
+<div class="col-12 col-md-8 mb-3 mx-auto">
+    <div class="card border border-dark{% if not blog_post.publish_date %}  bg-warning {% endif %}">
+        <div class="card-body">
+            {% if blog_post.image and show_image %}
+                <img src="{{blog_post.image.url}}" class="card-img-top"/>
+            {% endif %}
+            <h5 class="card-title" style="font-weight: bold">{{ blog_post.title }}</h5>
+            <p class="card-text">
+                <small class="text-muted">{{ blog_post.publish_date }}</small>
+                {% if truncate %}
+                    {{ blog_post.content|linebreaks|truncatewords:35 }}
+                {% else %}
+                    {{ blog_post.content|linebreaks }}
+                {% endif %}
+            </p>
+            {% if not detail %}
+                <a class="btn btn-primary {% if not blog_post.publish_date %} btn-dark {% endif %}" role="button" href=" {{ blog_post.get_absolute_url }}">
+                    View post
+                </a>
+            {% endif %}
+           
+            {% if in_post %}
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_staff %}
+                        <div class="col-12">
+                            <a class="btn btn-dark" href="{{ object.get_edit_url }}" role="button">Edit</a>
+                            <a class="btn btn-warning {% if not blog_post.publish_date %}  btn-dark {% endif %}" href="{{ object.get_delete_url }}" role="button">Delete</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
